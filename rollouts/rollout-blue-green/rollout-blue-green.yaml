@@ -34,12 +34,12 @@ spec:
       activeService: guestbook-active
       previewService: guestbook-preview
       autoPromotionEnabled: false
-      
----      
+---
+# Active Service
 apiVersion: v1
 kind: Service
 metadata:
-  name: guestbook-active-bluegreen
+  name: guestbook-active
   labels:
     app: guestbook
 spec:
@@ -49,10 +49,11 @@ spec:
   selector:
     app: guestbook
 ---
+# Preview Service
 apiVersion: v1
 kind: Service
 metadata:
-  name: guestbook-preview-bluegreen
+  name: guestbook-preview
   labels:
     app: guestbook
 spec:
@@ -61,7 +62,6 @@ spec:
     targetPort: 8080
   selector:
     app: guestbook
-
 # ---
 # # Ingress Configuration
 # apiVersion: networking.k8s.io/v1
