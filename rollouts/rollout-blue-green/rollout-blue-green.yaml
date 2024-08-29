@@ -34,7 +34,6 @@ spec:
       activeService: guestbook-active
       previewService: guestbook-preview
       autoPromotionEnabled: false
-
 ---
 # Active Service
 apiVersion: v1
@@ -49,7 +48,6 @@ spec:
     targetPort: 8080
   selector:
     app: guestbook
-
 ---
 # Preview Service
 apiVersion: v1
@@ -64,7 +62,6 @@ spec:
     targetPort: 8080
   selector:
     app: guestbook
-
 ---
 # Ingress Configuration
 apiVersion: networking.k8s.io/v1
