@@ -1,0 +1,51 @@
+# Guestbook Rolling Deployment
+
+# Guestbook Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guestbook-deployment
+  labels:
+    app: guestbook
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: guestbook
+  template:
+    metadata:
+      labels:
+        app: guestbook
+    spec:
+      containers:
+      - name: guestbook
+        image: gcr.io/heptio-images/ks-guestbook-demo:0.1
+        resources:
+          requests:
+            cpu: 50m
+            memory: 100Mi
+          limits:
+            cpu: 200m
+            memory: 200Mi
+        ports:
+        - containerPort: 8080
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+---
+# Guestbook Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: guestbook-service
+  labels:
+    app: guestbook
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    app: guestbook
