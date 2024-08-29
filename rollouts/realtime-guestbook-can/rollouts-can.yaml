@@ -62,24 +62,24 @@ spec:
     targetPort: 8080
   selector:
     app: guestbook
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: guestbook-ingress
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/affinity: cookie
-    nginx.ingress.kubernetes.io/affinity-mode: persistent
-spec:
-  rules:
-  - host: guestbook.example.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: guestbook-stable
-            port:
-              number: 80
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: guestbook-ingress
+#   annotations:
+#     kubernetes.io/ingress.class: nginx
+#     nginx.ingress.kubernetes.io/affinity: cookie
+#     nginx.ingress.kubernetes.io/affinity-mode: persistent
+# spec:
+#   rules:
+#   - host: guestbook.example.com
+#     http:
+#       paths:
+#       - path: /
+#         pathType: Prefix
+#         backend:
+#           service:
+#             name: guestbook-stable
+#             port:
+#               number: 80
