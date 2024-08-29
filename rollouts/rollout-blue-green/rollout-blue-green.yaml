@@ -4,7 +4,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: guestbook-rollout-2
+  name: guestbook-rollout
   labels:
     app: guestbook
 spec:
