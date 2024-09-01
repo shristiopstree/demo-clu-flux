@@ -1,4 +1,4 @@
-apiVersion: argoproj.io/v1alpha1
+2apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
   name: guestbook-rollout
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: guestbook
-        image: gcr.io/heptio-images/ks-guestbook-demo:0.1
+        image: gcr.io/heptio-images/ks-guestbook-demo:0.2
         env:
         - name: REDISHOST
           value: "redisapp:6379"
